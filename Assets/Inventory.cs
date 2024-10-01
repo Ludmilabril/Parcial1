@@ -9,7 +9,26 @@ public class Inventory : MonoBehaviour
     private const int SLOTS = 6;
     private List<IInventoryItem> mItems = new List<IInventoryItem>();
     public event EventHandler <InventoryEventsArgs> ItemAdded;
+    public event EventHandler<InventoryEventsArgs> ItemUsed;
 
+    public List<IInventoryItem> GetItems()
+    {
+        return mItems;
+    }
+    public void UseItem(IInventoryItem item)
+    {
+        GameObject goItem = (item as MonoBehaviour).gameObject;
+
+        if (goItem != null)
+        {
+            goItem.SetActive(true); 
+        }
+
+        if (ItemUsed != null)
+        {
+            ItemUsed(this, new InventoryEventsArgs(item)); 
+        }
+    }
     public void addItem(IInventoryItem item)
     {
         if (mItems.Count < SLOTS)
@@ -20,8 +39,6 @@ public class Inventory : MonoBehaviour
                 collider.enabled = false;
                 mItems.Add(item);
                 item.OnPickUp();
-
-                Debug.Log("Item added: " + item.Name); 
 
                 if (ItemAdded != null)
                 {

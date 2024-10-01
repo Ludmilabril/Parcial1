@@ -14,9 +14,8 @@ public class ItemsScript : MonoBehaviour, IInventoryItem
 
     public void OnPickUp()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); 
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

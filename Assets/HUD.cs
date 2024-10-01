@@ -8,7 +8,9 @@ using Image = UnityEngine.UI.Image;
 
 public class HUD : MonoBehaviour
 {
-  public Inventory Inventory;
+    public Inventory Inventory;
+    public GameObject MessagePanel;
+
 
     private void Start()
     {
@@ -33,5 +35,14 @@ public class HUD : MonoBehaviour
 
             }
         }
+    }
+
+    public void OpenMessagePanel(string text)
+    {
+        MessagePanel.SetActive(true);
+    }
+    public void CloseMessagePanel()
+    {
+        MessagePanel.SetActive(false);
     }
 }
