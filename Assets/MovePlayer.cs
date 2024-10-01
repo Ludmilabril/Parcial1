@@ -27,6 +27,11 @@ public class MovePlayer : MonoBehaviour
         }
 
         goItem.SetActive(true);
+        Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+        if (collider.enabled == false)
+        {
+            collider.enabled = true;
+        }
 
         goItem.transform.SetParent(transform); 
         goItem.transform.localPosition = new Vector3(0, 0.2f, 1);
@@ -42,7 +47,7 @@ public class MovePlayer : MonoBehaviour
             hud.CloseMessagePanel();
         }
 
-        // Movimiento del jugador
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 movimiento = new Vector3(horizontal, 0.0f, vertical);

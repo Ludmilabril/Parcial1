@@ -8,6 +8,7 @@ TagManager:
   - Seeds
   - Item
   - flower
+  - Land
   layers:
   - Default
   - TransparentFX
