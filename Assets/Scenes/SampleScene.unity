@@ -231,6 +231,7 @@ MonoBehaviour:
   TextRec: {fileID: 0}
   textMesh: {fileID: 0}
   fruits: []
+  inventory: {fileID: 0}
 --- !u!1 &34670949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ab9bb335781de184eb7c40bcd07d22aa,
@@ -2787,6 +2788,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &780512917
 GameObject:
   m_ObjectHideFlags: 0
@@ -4531,6 +4533,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &1099812095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,6 +4648,7 @@ MonoBehaviour:
   - {fileID: 1414071613}
   - {fileID: 1636921739}
   - {fileID: 34670949}
+  inventory: {fileID: 813732139}
 --- !u!1 &1126302810
 GameObject:
   m_ObjectHideFlags: 0
@@ -6032,6 +6036,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &1547451436
 GameObject:
   m_ObjectHideFlags: 0
@@ -6325,6 +6330,7 @@ MonoBehaviour:
   TextRec: {fileID: 0}
   textMesh: {fileID: 0}
   fruits: []
+  inventory: {fileID: 0}
 --- !u!1 &1590427056
 GameObject:
   m_ObjectHideFlags: 0

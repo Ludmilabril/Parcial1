@@ -37,8 +37,6 @@ public class ItemClick : MonoBehaviour
             IInventoryItem item = inventory.GetItems()[slot];
             if (item != null)
             {
-                Debug.Log("Using item: " + item.Name);
-
                 inventory.UseItem(item); 
 
                 if (currentItemImage != null)

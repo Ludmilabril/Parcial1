@@ -10,9 +10,11 @@ public class PlantSeeds : MonoBehaviour
     public GameObject TextTime;
     public GameObject TextRec;
     public TextMesh textMesh;
-    public List<GameObject> fruits; 
+    public List<GameObject> fruits;
+    public Inventory inventory;  // Referencia al inventario
 
     private bool isInLandTrigger = false;
+    private IInventoryItem currentSeedItem; // Para almacenar el ítem de semillas actual
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +22,9 @@ public class PlantSeeds : MonoBehaviour
         {
             TextPlant.SetActive(true);
             isInLandTrigger = true;
+
+            // Obtén el ítem de semillas del inventario
+            currentSeedItem = other.GetComponent<IInventoryItem>();
         }
     }
 
@@ -46,6 +51,11 @@ public class PlantSeeds : MonoBehaviour
             {
                 seedsObject.SetActive(false);
             }
+            if (currentSeedItem != null)
+            {
+                inventory.RemoveItem(currentSeedItem);
+                currentSeedItem = null;
+            }
 
             StartCoroutine(StartPlantingTimer(10f));
         }
@@ -70,6 +80,7 @@ public class PlantSeeds : MonoBehaviour
         TextRec.SetActive(true);
 
         ActivateFruits();
+
     }
 
     private void ActivateFruits()

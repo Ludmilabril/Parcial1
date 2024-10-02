@@ -22,7 +22,6 @@ public class MovePlayer : MonoBehaviour
 
         if (goItem == null)
         {
-            Debug.LogError("El objeto del ítem es null.");
             return;
         }
 
