@@ -9,6 +9,8 @@ TagManager:
   - Item
   - flower
   - Land
+  - CarrotSeeds
+  - TomatoSeeds
   layers:
   - Default
   - TransparentFX

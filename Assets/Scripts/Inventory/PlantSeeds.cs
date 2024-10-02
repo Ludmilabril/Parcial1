@@ -11,26 +11,25 @@ public class PlantSeeds : MonoBehaviour
     public GameObject TextRec;
     public TextMesh textMesh;
     public List<GameObject> fruits;
-    public Inventory inventory;  // Referencia al inventario
+    public Inventory inventory;
+    public string TypeSeed;
 
     private bool isInLandTrigger = false;
-    private IInventoryItem currentSeedItem; // Para almacenar el ítem de semillas actual
+    private IInventoryItem currentSeedItem; 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Seeds"))
+        if (other.CompareTag(TypeSeed))
         {
             TextPlant.SetActive(true);
             isInLandTrigger = true;
-
-            // Obtén el ítem de semillas del inventario
             currentSeedItem = other.GetComponent<IInventoryItem>();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Seeds"))
+        if (other.CompareTag(TypeSeed))
         {
             TextPlant.SetActive(false);
             TextTime.SetActive(false);
@@ -46,7 +45,7 @@ public class PlantSeeds : MonoBehaviour
             TextPlant.SetActive(false);
             TextTime.SetActive(true);
 
-            GameObject seedsObject = GameObject.FindGameObjectWithTag("Seeds");
+            GameObject seedsObject = GameObject.FindGameObjectWithTag(TypeSeed);
             if (seedsObject != null)
             {
                 seedsObject.SetActive(false);
