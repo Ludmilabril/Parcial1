@@ -44,7 +44,7 @@ public class PlantSeeds : MonoBehaviour
         {
             TextPlant.SetActive(false);
             TextTime.SetActive(true);
-
+            
             GameObject seedsObject = GameObject.FindGameObjectWithTag(TypeSeed);
             if (seedsObject != null)
             {
@@ -57,7 +57,9 @@ public class PlantSeeds : MonoBehaviour
             }
 
             StartCoroutine(StartPlantingTimer(10f));
+        
         }
+       
     }
 
     private IEnumerator StartPlantingTimer(float duration)

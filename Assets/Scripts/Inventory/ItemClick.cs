@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ItemClick : MonoBehaviour
 {
-    public Inventory inventory; 
-    public GameObject inventoryPanel; 
-    private Color colorInicial; 
+    public Inventory inventory;
+    public GameObject inventoryPanel;
+    private Color colorInicial;
 
-    private Image currentItemImage; 
-
+    private Image currentItemImage;
+    private IInventoryItem currentItem; 
     private void Start()
     {
         Transform slotTransform = inventoryPanel.transform;
@@ -29,7 +29,6 @@ public class ItemClick : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha6)) { PressItem(5); }
     }
 
-
     private void PressItem(int slot)
     {
         if (slot < inventory.GetItems().Count)
@@ -37,11 +36,19 @@ public class ItemClick : MonoBehaviour
             IInventoryItem item = inventory.GetItems()[slot];
             if (item != null)
             {
-                inventory.UseItem(item); 
+                if (currentItem != null)
+                {
+                    GameObject currentItemObject = (currentItem as MonoBehaviour).gameObject;
+                    currentItemObject.SetActive(false); 
+                }
+
+                inventory.UseItem(item);
+
+                currentItem = item;
 
                 if (currentItemImage != null)
                 {
-                    currentItemImage.color = colorInicial; 
+                    currentItemImage.color = colorInicial;
                 }
 
                 Transform slotTransform = inventoryPanel.transform;
@@ -50,5 +57,4 @@ public class ItemClick : MonoBehaviour
             }
         }
     }
-
 }
