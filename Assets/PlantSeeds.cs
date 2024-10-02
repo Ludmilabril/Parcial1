@@ -9,7 +9,8 @@ public class PlantSeeds : MonoBehaviour
     public GameObject TextPlant;
     public GameObject TextTime;
     public GameObject TextRec;
-    public TextMesh textMesh; 
+    public TextMesh textMesh;
+    public List<GameObject> fruits; 
 
     private bool isInLandTrigger = false;
 
@@ -28,7 +29,7 @@ public class PlantSeeds : MonoBehaviour
         {
             TextPlant.SetActive(false);
             TextTime.SetActive(false);
-            textMesh.text = ""; 
+            textMesh.text = "";
             isInLandTrigger = false;
         }
     }
@@ -59,7 +60,7 @@ public class PlantSeeds : MonoBehaviour
             timer += Time.deltaTime;
 
             float remainingTime = duration - timer;
-            textMesh.text =  Mathf.Ceil(remainingTime).ToString(); 
+            textMesh.text = Mathf.Ceil(remainingTime).ToString();
 
             yield return null;
         }
@@ -67,5 +68,19 @@ public class PlantSeeds : MonoBehaviour
         TextTime.SetActive(false);
         textMesh.text = "";
         TextRec.SetActive(true);
+
+        ActivateFruits();
+    }
+
+    private void ActivateFruits()
+    {
+        foreach (GameObject fruit in fruits)
+        {
+            if (fruit != null)
+            {
+                fruit.SetActive(true);
+                TextRec.SetActive(false);
+            }
+        }
     }
 }
