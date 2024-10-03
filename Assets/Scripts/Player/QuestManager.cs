@@ -14,6 +14,7 @@ public class QuestManager : MonoBehaviour
 
     public int CantQuest;
     public GameObject Carrots;
+    public GameObject Potatos;
 
     private void Update()
     {
@@ -25,6 +26,7 @@ public class QuestManager : MonoBehaviour
             Quest4.text = "";
             Quest5.text = "";
             Carrots.SetActive(true);
+            Potatos.SetActive(true);
             StartCoroutine(StartPlantingTimer(10f));
         }
     }
