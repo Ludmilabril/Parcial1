@@ -20,11 +20,29 @@ public class QuestManager : MonoBehaviour
         if (CantQuest == 5)
         {
             Quest1.text = "Congratulatios you plant your first Tomatoes";
-            Quest2.text = "";
+            Quest2.text = "Now you can plant the rest";
             Quest3.text = "";
             Quest4.text = "";
             Quest5.text = "";
             Carrots.SetActive(true);
+            StartCoroutine(StartPlantingTimer(10f));
         }
+    }
+    private IEnumerator StartPlantingTimer(float duration)
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            float remainingTime = duration - timer;
+
+
+            yield return null;
+        }
+
+        Quest1.text = "";
+        Quest2.text = "";
     }
 }
