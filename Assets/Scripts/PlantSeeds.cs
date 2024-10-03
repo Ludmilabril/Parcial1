@@ -12,8 +12,9 @@ public class PlantSeeds : MonoBehaviour
     public List<GameObject> fruits;
     public Inventory inventory;
     public string TypeSeed;
-    public ControlWaterPlants waterControl; 
-
+    public ControlWaterPlants waterControl;
+    public QuestManager manager;
+    public float timer;
     private bool isInLandTrigger = false;
     private IInventoryItem currentSeedItem;
 
@@ -56,8 +57,14 @@ public class PlantSeeds : MonoBehaviour
                 inventory.RemoveItem(currentSeedItem);
                 currentSeedItem = null;
             }
+            Text questText = manager.Quest2.GetComponent<Text>();
 
-            StartCoroutine(StartPlantingTimer(60f));
+            if (questText != null)
+            {
+                manager.CantQuest += 1;
+                questText.color = Color.green;
+            }
+            StartCoroutine(StartPlantingTimer(timer));
         }
     }
 

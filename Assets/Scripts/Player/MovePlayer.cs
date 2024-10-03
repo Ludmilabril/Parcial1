@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class MovePlayer : MonoBehaviour
@@ -9,7 +10,7 @@ public class MovePlayer : MonoBehaviour
     public float velocidad = 8;
     public Inventory inventory;
     public HUD hud;
-
+    public QuestManager manager;
     private void Start()
     {
         inventory.ItemUsed += Inventory_ItemUsed;
@@ -44,6 +45,13 @@ public class MovePlayer : MonoBehaviour
             inventory.addItem(mItemToPickup);
             mItemToPickup.OnPickUp();
             hud.CloseMessagePanel();
+            Text questText = manager.Quest1.GetComponent<Text>();
+
+            if (questText != null)
+            {
+                manager.CantQuest += 1;
+                questText.color = Color.green; 
+            }
         }
 
 

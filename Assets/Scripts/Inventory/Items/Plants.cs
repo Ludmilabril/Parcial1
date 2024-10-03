@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Plants : MonoBehaviour, IInventoryItem
 {
+    public QuestManager manager;
     public string Name { get { return "Plants"; } }
 
     public Sprite _image;
@@ -28,6 +30,14 @@ public class Plants : MonoBehaviour, IInventoryItem
             {
                 playerInventory.addItem(this.GetComponent<IInventoryItem>());
             }
+            Text questText = manager.Quest5.GetComponent<Text>();
+
+            if (questText != null)
+            {
+                manager.CantQuest += 1;
+                questText.color = Color.green;
+            }
+
         }
     }
 

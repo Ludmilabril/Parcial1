@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ItemsScript : MonoBehaviour, IInventoryItem
 {
     public string Name { get { return "Seeds"; } } 
@@ -10,7 +11,7 @@ public class ItemsScript : MonoBehaviour, IInventoryItem
     {
         get { return _image; }
     }
-   
+
     public void OnPickUp()
     {
         gameObject.SetActive(false);
@@ -25,6 +26,7 @@ public class ItemsScript : MonoBehaviour, IInventoryItem
             {
                 playerInventory.addItem(this.GetComponent<IInventoryItem>());
             }
+           
         }
     }
 }

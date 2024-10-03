@@ -11,8 +11,8 @@ public class ControlWaterPlants : MonoBehaviour
     private bool canWater = false;
     public TextMesh waterText;
     public int WateringCanMax = 30;
-    public Text textEmpty;
     public GameObject waterBucket;
+    public QuestManager manager;
 
 
     public IEnumerator WaterDecrease()
@@ -47,6 +47,13 @@ public class ControlWaterPlants : MonoBehaviour
                 {
                     renderer.material.color = Color.white;
                 }
+                Text questText = manager.Quest4.GetComponent<Text>();
+
+                if (questText != null)
+                {
+                    questText.color = Color.green;
+                }
+
 
             }
 
