@@ -12,6 +12,8 @@ public class Plants : MonoBehaviour, IInventoryItem
         get { return _image; }
     }
 
+    
+
     public void OnPickUp()
     {
         gameObject.SetActive(false); 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 public class PlantSeeds : MonoBehaviour
 {
     public GameObject TextPlant;
@@ -13,9 +12,10 @@ public class PlantSeeds : MonoBehaviour
     public List<GameObject> fruits;
     public Inventory inventory;
     public string TypeSeed;
+    public ControlWaterPlants waterControl; 
 
     private bool isInLandTrigger = false;
-    private IInventoryItem currentSeedItem; 
+    private IInventoryItem currentSeedItem;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,7 +44,8 @@ public class PlantSeeds : MonoBehaviour
         {
             TextPlant.SetActive(false);
             TextTime.SetActive(true);
-            
+            waterControl.StartCoroutine(waterControl.WaterDecrease());
+
             GameObject seedsObject = GameObject.FindGameObjectWithTag(TypeSeed);
             if (seedsObject != null)
             {
@@ -56,10 +57,8 @@ public class PlantSeeds : MonoBehaviour
                 currentSeedItem = null;
             }
 
-            StartCoroutine(StartPlantingTimer(10f));
-        
+            StartCoroutine(StartPlantingTimer(60f));
         }
-       
     }
 
     private IEnumerator StartPlantingTimer(float duration)
@@ -79,20 +78,7 @@ public class PlantSeeds : MonoBehaviour
         TextTime.SetActive(false);
         textMesh.text = "";
         TextRec.SetActive(true);
-
-        ActivateFruits();
-
-    }
-
-    private void ActivateFruits()
-    {
-        foreach (GameObject fruit in fruits)
-        {
-            if (fruit != null)
-            {
-                fruit.SetActive(true);
-                TextRec.SetActive(false);
-            }
-        }
+        waterControl.StopCoroutine(waterControl.WaterDecrease());
+        waterControl.ActivateFruits(); 
     }
 }

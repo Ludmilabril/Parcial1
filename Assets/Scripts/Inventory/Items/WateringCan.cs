@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarrotSeeds : MonoBehaviour, IInventoryItem
+public class WateringCan : MonoBehaviour, IInventoryItem
 {
-    public string Name { get { return "Seeds"; } }
+    public string Name { get { return "Plants"; } }
 
     public Sprite _image;
     public Sprite image
@@ -13,10 +13,12 @@ public class CarrotSeeds : MonoBehaviour, IInventoryItem
     }
 
 
+
     public void OnPickUp()
     {
         gameObject.SetActive(false);
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -28,4 +30,5 @@ public class CarrotSeeds : MonoBehaviour, IInventoryItem
             }
         }
     }
+
 }
