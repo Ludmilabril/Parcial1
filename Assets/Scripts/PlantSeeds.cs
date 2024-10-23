@@ -18,6 +18,8 @@ public class PlantSeeds : MonoBehaviour
     private bool isInLandTrigger = false;
     private IInventoryItem currentSeedItem;
 
+    private bool WithGardenShovel = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(TypeSeed))
@@ -25,6 +27,10 @@ public class PlantSeeds : MonoBehaviour
             TextPlant.SetActive(true);
             isInLandTrigger = true;
             currentSeedItem = other.GetComponent<IInventoryItem>();
+        }
+        if (other.CompareTag("GardenShovel")) 
+        {
+            WithGardenShovel = true;
         }
     }
 
@@ -41,12 +47,10 @@ public class PlantSeeds : MonoBehaviour
 
     private void Update()
     {
-        if (isInLandTrigger && Input.GetKeyDown(KeyCode.Q))
+        if (isInLandTrigger && Input.GetKeyDown(KeyCode.Q) )
         {
             TextPlant.SetActive(false);
-            TextTime.SetActive(true);
-            waterControl.StartCoroutine(waterControl.WaterDecrease());
-
+          
             GameObject seedsObject = GameObject.FindGameObjectWithTag(TypeSeed);
             if (seedsObject != null)
             {
@@ -59,12 +63,20 @@ public class PlantSeeds : MonoBehaviour
             }
             Text questText = manager.Quest2.GetComponent<Text>();
 
-            if (questText != null)
+            if (WithGardenShovel && Input.GetKeyDown(KeyCode.Q))
             {
-                manager.CantQuest += 1;
-                questText.color = Color.green;
+                TextTime.SetActive(true);
+                waterControl.StartCoroutine(waterControl.WaterDecrease());
+                StartCoroutine(StartPlantingTimer(timer));
+
+                if (questText != null)
+                {
+                    manager.CantQuest += 1;
+                    questText.color = Color.green;
+                }
+
             }
-            StartCoroutine(StartPlantingTimer(timer));
+           
         }
     }
 

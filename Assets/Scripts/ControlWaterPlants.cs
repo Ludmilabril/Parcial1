@@ -45,7 +45,7 @@ public class ControlWaterPlants : MonoBehaviour
                 Renderer renderer = waterBucket.GetComponent<Renderer>();
                 if (renderer != null)
                 {
-                    renderer.material.color = Color.white;
+                    renderer.material.color = Color.black;
                 }
                 Text questText = manager.Quest4.GetComponent<Text>();
 

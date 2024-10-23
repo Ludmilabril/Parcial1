@@ -15,6 +15,7 @@ TagManager:
   - Water
   - WaterSource
   - Potato
+  - GardenShovel
   layers:
   - Default
   - TransparentFX
