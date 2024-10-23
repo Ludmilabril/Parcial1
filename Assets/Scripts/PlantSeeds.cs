@@ -6,6 +6,7 @@ using TMPro;
 public class PlantSeeds : MonoBehaviour
 {
     public GameObject TextPlant;
+    public GameObject TextPlant2;
     public GameObject TextTime;
     public GameObject TextRec;
     public TextMesh textMesh;
@@ -30,6 +31,7 @@ public class PlantSeeds : MonoBehaviour
         }
         if (other.CompareTag("GardenShovel")) 
         {
+            TextPlant2.SetActive(true);
             WithGardenShovel = true;
         }
     }
@@ -42,12 +44,19 @@ public class PlantSeeds : MonoBehaviour
             TextTime.SetActive(false);
             textMesh.text = "";
             isInLandTrigger = false;
+            
         }
+        if (other.CompareTag("GardenShovel"))
+        {
+            WithGardenShovel = false;
+            TextPlant2.SetActive(false);
+        }
+        
     }
 
     private void Update()
     {
-        if (isInLandTrigger && Input.GetKeyDown(KeyCode.Q) )
+        if (isInLandTrigger && Input.GetKeyDown(KeyCode.Q))
         {
             TextPlant.SetActive(false);
           
@@ -61,11 +70,17 @@ public class PlantSeeds : MonoBehaviour
                 inventory.RemoveItem(currentSeedItem);
                 currentSeedItem = null;
             }
+           
+        }
+        if (WithGardenShovel && isInLandTrigger)
+        {
             Text questText = manager.Quest2.GetComponent<Text>();
 
-            if (WithGardenShovel && Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
+                TextPlant2.GetComponent<TextMesh>().text = "";
                 TextTime.SetActive(true);
+
                 waterControl.StartCoroutine(waterControl.WaterDecrease());
                 StartCoroutine(StartPlantingTimer(timer));
 
@@ -76,7 +91,6 @@ public class PlantSeeds : MonoBehaviour
                 }
 
             }
-           
         }
     }
 
