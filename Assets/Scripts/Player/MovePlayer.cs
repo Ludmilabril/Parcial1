@@ -46,11 +46,12 @@ public class MovePlayer : MonoBehaviour
             mItemToPickup.OnPickUp();
             hud.CloseMessagePanel();
             Text questText = manager.Quest1.GetComponent<Text>();
+            QuestManager managerQuest = manager.GetComponent<QuestManager>();
 
-            if (questText != null)
+            if (questText != null && managerQuest.CantQuest == 0)
             {
                 manager.CantQuest += 1;
-                questText.color = Color.green; 
+                questText.color = Color.green;
             }
         }
 

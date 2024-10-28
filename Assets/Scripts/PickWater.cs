@@ -23,9 +23,10 @@ public class PickWater : MonoBehaviour
             {
                 renderer.material.color = Color.blue; 
             }
-            Text questText = manager.Quest3.GetComponent<Text>();
+            Text questText = manager.Quest1.GetComponent<Text>();
+            QuestManager managerQuest = manager.GetComponent<QuestManager>();
 
-            if (questText != null)
+            if (questText != null && managerQuest.CantQuest == 2)
             {
                 manager.CantQuest += 1;
                 questText.color = Color.green;
