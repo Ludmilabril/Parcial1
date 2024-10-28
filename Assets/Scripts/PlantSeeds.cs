@@ -84,11 +84,12 @@ public class PlantSeeds : MonoBehaviour
                 waterControl.StartCoroutine(waterControl.WaterDecrease());
                 StartCoroutine(StartPlantingTimer(timer));
 
-                Text questText = manager.Quest1.GetComponent<Text>();
+                Text questText = manager.Quest2.GetComponent<Text>();
                 if (questText != null)
-                {
-                    manager.CantQuest += 1;
+                {        
                     questText.color = Color.green;
+                    manager.CantQuest += 1;
+ 
                 }
 
             }
