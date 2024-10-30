@@ -20,6 +20,9 @@ TagManager:
   - Garlic
   - Soup
   - IngridientsTomato
+  - IngridientsPotato
+  - CarrotsPesticide
+  - PotatoPesticide
   layers:
   - Default
   - TransparentFX

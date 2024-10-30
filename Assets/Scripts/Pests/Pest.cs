@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Pest : MonoBehaviour
 {
-
+    public string PesticideName;
     public GameObject PanelText;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("TomatosPesticide"))
+        if (other.CompareTag(PesticideName))
         {
             Destroy(gameObject);  
             PanelText.SetActive(false);
