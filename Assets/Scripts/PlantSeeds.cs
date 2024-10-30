@@ -21,6 +21,8 @@ public class PlantSeeds : MonoBehaviour
 
     private bool WithGardenShovel = false;
 
+    public SpawnPests spawnPests;  
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(TypeSeed))
@@ -100,20 +102,21 @@ public class PlantSeeds : MonoBehaviour
     {
         float timer = 0f;
 
+        
+        spawnPests.StartSpawningPests(duration);
+       
         while (timer < duration)
         {
             timer += Time.deltaTime;
-
             float remainingTime = duration - timer;
             textMesh.text = Mathf.Ceil(remainingTime).ToString();
-
             yield return null;
         }
 
         TextTime.SetActive(false);
         textMesh.text = "";
         TextRec.SetActive(true);
-        waterControl.StopCoroutine(waterControl.WaterDecrease());
-        waterControl.ActivateFruits(); 
+        waterControl.StopWaterDecrease();
+        waterControl.ActivateFruits();
     }
 }

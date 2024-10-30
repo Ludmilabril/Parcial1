@@ -42,11 +42,13 @@ public class ControlWaterPlants : MonoBehaviour
             yield return null;
         }
         StopCoroutine(WaterDecrease());
+        waterTextGameObject.SetActive(false);
     }
     public void StopWaterDecrease()
-    {
-        StopCoroutine(WaterDecrease());
+    {       
         waterTextGameObject.SetActive(false);
+        StopCoroutine(WaterDecrease());
+
     }
     private void OnTriggerEnter(Collider other)
     {

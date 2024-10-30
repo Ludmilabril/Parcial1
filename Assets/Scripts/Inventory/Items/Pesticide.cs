@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WateringCan : MonoBehaviour, IInventoryItem
+public class Pesticide : MonoBehaviour, IInventoryItem
 {
-    public string Name { get { return "WateringCan"; } }
+    public string Name { get { return "Soup"; } }
 
     public Sprite _image;
     public Sprite image
@@ -13,12 +13,10 @@ public class WateringCan : MonoBehaviour, IInventoryItem
     }
 
 
-
     public void OnPickUp()
     {
         gameObject.SetActive(false);
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -30,5 +28,4 @@ public class WateringCan : MonoBehaviour, IInventoryItem
             }
         }
     }
-
 }

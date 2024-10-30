@@ -50,5 +50,9 @@ public class Inventory : MonoBehaviour
             mItems.Remove(item);
             ItemRemoved?.Invoke(this, new InventoryEventsArgs(item));
         }
+        else
+        {
+            Debug.LogWarning("Item no encontrado en el inventario: " + item);
+        }
     }
 }

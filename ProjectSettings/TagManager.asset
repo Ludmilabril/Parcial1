@@ -16,6 +16,10 @@ TagManager:
   - WaterSource
   - Potato
   - GardenShovel
+  - TomatosPesticide
+  - Garlic
+  - Soup
+  - IngridientsTomato
   layers:
   - Default
   - TransparentFX

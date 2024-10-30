@@ -31,30 +31,43 @@ public class ItemClick : MonoBehaviour
 
     private void PressItem(int slot)
     {
-        if (slot < inventory.GetItems().Count)
+        if (slot < 0 || slot >= inventory.GetItems().Count)
+            return;
+
+        IInventoryItem item = inventory.GetItems()[slot];
+
+        if (item != null)
         {
-            IInventoryItem item = inventory.GetItems()[slot];
-            if (item != null)
+
+            if (currentItem != null)
             {
-                if (currentItem != null)
+                GameObject currentItemObject = (currentItem as MonoBehaviour).gameObject;
+                if (currentItemObject != null) 
                 {
-                    GameObject currentItemObject = (currentItem as MonoBehaviour).gameObject;
-                    currentItemObject.SetActive(false); 
+                    currentItemObject.SetActive(false);
                 }
-
-                inventory.UseItem(item);
-
-                currentItem = item;
-
-                if (currentItemImage != null)
-                {
-                    currentItemImage.color = colorInicial;
-                }
-
-                Transform slotTransform = inventoryPanel.transform;
-                currentItemImage = slotTransform.GetChild(slot).GetComponent<Image>();
-                currentItemImage.color = Color.green;
             }
+
+            inventory.UseItem(item);
+
+            currentItem = item;
+
+            if (currentItemImage != null)
+            {
+                currentItemImage.color = colorInicial; 
+            }
+
+            Transform slotTransform = inventoryPanel.transform;
+            currentItemImage = slotTransform.GetChild(slot).GetComponent<Image>();
+
+            if (currentItemImage != null)
+            {
+                currentItemImage.color = Color.green; 
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Ítem nulo en el slot: " + slot); 
         }
     }
 }
