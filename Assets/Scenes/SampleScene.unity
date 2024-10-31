@@ -11234,7 +11234,7 @@ MonoBehaviour:
   - {fileID: 1322755282}
   - {fileID: 161139458}
   minSpawnInterval: 20
-  maxSpawnInterval: 90
+  maxSpawnInterval: 80
   PanelText: {fileID: 1244492133}
 --- !u!1 &1151969122
 GameObject:
