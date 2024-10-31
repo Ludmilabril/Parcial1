@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class QuestManager : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class QuestManager : MonoBehaviour
     public Text Quest3;
     public Text Quest4;
     public Text Quest5;
+    public Text Tut;
 
     public int CantQuest;
     public GameObject Carrots;
     public GameObject Potatos;
-
+    public GameObject Panel;
     private void Update()
     {
         if (CantQuest == 5)
@@ -25,6 +27,8 @@ public class QuestManager : MonoBehaviour
             Quest3.text = "";
             Quest4.text = "";
             Quest5.text = "";
+            Tut.text = "";
+            Panel.SetActive(false);
             Carrots.SetActive(true);
             Potatos.SetActive(true);
             StartCoroutine(StartPlantingTimer(10f));
