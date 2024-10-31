@@ -163,10 +163,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1645355
-  m_Height: 2.6754909
+  m_Radius: 1.568512
+  m_Height: 3.5404348
   m_Direction: 1
-  m_Center: {x: 0, y: 0.08940959, z: -0.02796936}
+  m_Center: {x: 0, y: -0.22560978, z: -0.4319458}
 --- !u!23 &2751323
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 2751320}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 103.821625, y: 22.244366, z: -103.20331}
+  m_LocalPosition: {x: 103.3, y: 22.244366, z: -103.20331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2551,7 +2551,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 61.1
+  far clip plane: 75
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -3364,7 +3364,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 8600000, guid: 279589678dd2adc43bb600541fb5d25b, type: 2}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -3418,7 +3418,7 @@ MonoBehaviour:
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
   m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieSize: {x: 100, y: 100}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
 --- !u!114 &410087043
@@ -11081,10 +11081,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1645355
-  m_Height: 2.6754909
+  m_Radius: 1.5004501
+  m_Height: 3.619987
   m_Direction: 1
-  m_Center: {x: 0, y: 0.08940959, z: -0.02796936}
+  m_Center: {x: -0.0627594, y: -0.094084024, z: -0.30112457}
 --- !u!23 &1233108339
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11144,7 +11144,7 @@ Transform:
   m_GameObject: {fileID: 1233108335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 107.321625, y: 22.244366, z: -103.20331}
+  m_LocalPosition: {x: 107.71, y: 22.244366, z: -103.20331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
