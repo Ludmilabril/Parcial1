@@ -10,7 +10,6 @@ public class PlantSeeds : MonoBehaviour
     public GameObject TextTime;
     public GameObject TextRec;
     public TextMesh textMesh;
-    public List<GameObject> fruits;
     public Inventory inventory;
     public string TypeSeed;
     public ControlWaterPlants waterControl;

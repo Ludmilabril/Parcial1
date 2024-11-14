@@ -6,8 +6,9 @@ public class ControlWaterPlants : MonoBehaviour
 {
     public float waterLevel = 100f;
     public float waterDecreaseRate = 1f;
-    public float dayWaterDecreaseMultiplier = 1.5f; 
-    public List<GameObject> fruits;
+    public float dayWaterDecreaseMultiplier = 1.5f;
+    public GameObject fruitPrefab; 
+    public List<Transform> fruitPositions; 
     public PickWater pickWater;
     private bool canWater = false;
     public TextMesh waterText;
@@ -15,16 +16,16 @@ public class ControlWaterPlants : MonoBehaviour
     public int WateringCanMax = 30;
     public GameObject waterBucket;
     public QuestManager manager;
-    public DayNight dayNightCycle; 
+    public DayNight dayNightCycle;
+
+    private List<GameObject> activeFruits = new List<GameObject>(); 
 
     public IEnumerator WaterDecrease()
     {
         while (waterLevel > 0)
         {
-
             float currentWaterDecreaseRate = waterDecreaseRate;
-
-            if (dayNightCycle.isDay) 
+            if (dayNightCycle.isDay)
             {
                 currentWaterDecreaseRate *= dayWaterDecreaseMultiplier;
             }
@@ -41,15 +42,17 @@ public class ControlWaterPlants : MonoBehaviour
 
             yield return null;
         }
-        StopCoroutine(WaterDecrease());
-        waterTextGameObject.SetActive(false);
-    }
-    public void StopWaterDecrease()
-    {       
-        waterTextGameObject.SetActive(false);
-        StopCoroutine(WaterDecrease());
 
+        StopCoroutine(WaterDecrease());
+        waterTextGameObject.SetActive(false);
     }
+
+    public void StopWaterDecrease()
+    {
+        waterTextGameObject.SetActive(false);
+        StopCoroutine(WaterDecrease());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("WateringCan") && pickWater.Filled == true)
@@ -60,13 +63,14 @@ public class ControlWaterPlants : MonoBehaviour
                 waterLevel += WateringCanMax;
                 waterLevel = Mathf.Min(waterLevel, 100f);
                 pickWater.Filled = false;
-               
             }
+
             Renderer renderer = waterBucket.GetComponent<Renderer>();
             if (renderer != null)
             {
                 renderer.material.color = Color.black;
             }
+
             Text questText = manager.Quest4.GetComponent<Text>();
             QuestManager managerQuest = manager.GetComponent<QuestManager>();
 
@@ -75,6 +79,7 @@ public class ControlWaterPlants : MonoBehaviour
                 manager.CantQuest += 1;
                 questText.color = Color.green;
             }
+
             if (WateringCanMax <= 30)
             {
                 pickWater.Filled = false;
@@ -92,26 +97,23 @@ public class ControlWaterPlants : MonoBehaviour
 
     private void DeactivateFruits()
     {
-        foreach (GameObject fruit in fruits)
+        foreach (GameObject fruit in activeFruits)
         {
             if (fruit != null)
             {
-                fruit.SetActive(false);
+                Destroy(fruit); 
             }
         }
+        activeFruits.Clear();
     }
 
     public void ActivateFruits()
     {
-        foreach (GameObject fruit in fruits)
+        foreach (Transform position in fruitPositions)
         {
-            if (fruit != null)
-            {
-                fruit.SetActive(true);
-
-            }
+            GameObject fruit = Instantiate(fruitPrefab, position.position, position.rotation);
+            activeFruits.Add(fruit);
         }
-
         waterLevel = 100f;
     }
 }

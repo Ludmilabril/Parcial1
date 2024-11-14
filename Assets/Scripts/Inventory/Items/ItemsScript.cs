@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class ItemsScript : MonoBehaviour, IInventoryItem
 {
-    public string Name { get { return "Seeds"; } } 
-    public Sprite _image;  
+    public string Name { get { return "TomatoSeeds"; } }
+
+    public Sprite _image;
     public Sprite image
     {
         get { return _image; }
     }
 
+
     public void OnPickUp()
     {
         gameObject.SetActive(false);
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -26,7 +27,6 @@ public class ItemsScript : MonoBehaviour, IInventoryItem
             {
                 playerInventory.addItem(this.GetComponent<IInventoryItem>());
             }
-           
         }
     }
 }
