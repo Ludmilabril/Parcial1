@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
-
 public class HUD : MonoBehaviour
 {
     public Inventory Inventory;
@@ -14,40 +13,38 @@ public class HUD : MonoBehaviour
     private void Start()
     {
         Inventory.ItemAdded += InventoryScript_ItemAdded;
-        Inventory.ItemRemoved += InventoryScript_ItemRemoved;  
+        Inventory.ItemRemoved += InventoryScript_ItemRemoved;
     }
 
     public void InventoryScript_ItemAdded(object sender, InventoryEventsArgs e)
     {
-        Transform inventoryPanel = transform.Find("InventoryPanel");
-
-        foreach (Transform Slot in inventoryPanel)
-        {
-            Image image = Slot.GetChild(0).GetChild(0).GetComponent<Image>();
-
-            if (!image.enabled)
-            {
-                image.enabled = true;
-                image.sprite = e.Item.image;
-                break;
-            }
-        }
+        UpdateInventoryUI();
     }
 
     public void InventoryScript_ItemRemoved(object sender, InventoryEventsArgs e)
     {
+        UpdateInventoryUI();
+    }
+
+    private void UpdateInventoryUI()
+    {
         Transform inventoryPanel = transform.Find("InventoryPanel");
+        List<IInventoryItem> items = Inventory.GetItems();
 
-        foreach (Transform Slot in inventoryPanel)
+        foreach (Transform slot in inventoryPanel)
         {
-            Image image = Slot.GetChild(0).GetChild(0).GetComponent<Image>();
+            Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();
+            image.enabled = false;
+            image.sprite = null;
+        }
 
-            if (image.sprite == e.Item.image)
-            {
-                image.enabled = false;
-                image.sprite = null; 
-                break;
-            }
+        for (int i = 0; i < items.Count; i++)
+        {
+            Transform slot = inventoryPanel.GetChild(i);
+            Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();
+
+            image.enabled = true;
+            image.sprite = items[i].image;
         }
     }
 
@@ -55,7 +52,6 @@ public class HUD : MonoBehaviour
     {
         MessagePanel.SetActive(true);
     }
-
 
     public void CloseMessagePanel()
     {
