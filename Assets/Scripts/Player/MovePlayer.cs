@@ -7,10 +7,12 @@ using static UnityEditor.Progress;
 
 public class MovePlayer : MonoBehaviour
 {
-    public float velocidad = 8;
+    public float velocidad = 8f;
+    public float velocidadCorrer = 12f; 
     public Inventory inventory;
     public HUD hud;
     public QuestManager manager;
+
     private void Start()
     {
         inventory.ItemUsed += Inventory_ItemUsed;
@@ -33,13 +35,13 @@ public class MovePlayer : MonoBehaviour
             collider.enabled = true;
         }
 
-        goItem.transform.SetParent(transform); 
+        goItem.transform.SetParent(transform);
         goItem.transform.localPosition = new Vector3(0, 0.2f, 1);
-        goItem.transform.localRotation = Quaternion.identity; 
+        goItem.transform.localRotation = Quaternion.identity;
     }
+
     void Update()
     {
-
         if (mItemToPickup != null && Input.GetKeyDown(KeyCode.F))
         {
             inventory.addItem(mItemToPickup);
@@ -55,11 +57,13 @@ public class MovePlayer : MonoBehaviour
             }
         }
 
-
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 movimiento = new Vector3(horizontal, 0.0f, vertical);
-        transform.Translate(movimiento * Time.deltaTime * velocidad);
+
+        float velocidadActual = Input.GetKey(KeyCode.LeftShift) ? velocidadCorrer : velocidad;
+
+        transform.Translate(movimiento * Time.deltaTime * velocidadActual);
     }
 
     private IInventoryItem mItemToPickup = null;

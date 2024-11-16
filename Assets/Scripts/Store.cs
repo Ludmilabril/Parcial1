@@ -50,6 +50,8 @@ public class Store : MonoBehaviour
         {
             InStore = false;
             storeCanvas.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
@@ -58,6 +60,8 @@ public class Store : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && InStore)
         {
             storeCanvas.SetActive(!storeCanvas.activeSelf);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 

@@ -9,7 +9,8 @@ public class Cam : MonoBehaviour
     void Start()
     {
         camara = transform.Find("Main Camera");
-        
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false; 
     }
 
     void Update()
