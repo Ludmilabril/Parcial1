@@ -23,11 +23,15 @@ TagManager:
   - IngridientsPotato
   - CarrotsPesticide
   - PotatoPesticide
+  - Ground
+  - Terrain
+  - PotatoPlace
+  - TomatoPlace
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
