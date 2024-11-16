@@ -17,6 +17,7 @@ public class PlantSeeds : MonoBehaviour
     public float timer;
     private bool isInLandTrigger = false;
     private IInventoryItem currentSeedItem;
+    public QualitySliderManager qualitySliderManager;
 
     private bool WithGardenShovel = false;
 
@@ -84,7 +85,7 @@ public class PlantSeeds : MonoBehaviour
 
                 waterControl.StartCoroutine(waterControl.WaterDecrease());
                 StartCoroutine(StartPlantingTimer(timer));
-
+                qualitySliderManager.ActivateSlider();
                 Text questText = manager.Quest2.GetComponent<Text>();
                 if (questText != null)
                 {        
