@@ -28,6 +28,10 @@ TagManager:
   - PotatoPlace
   - TomatoPlace
   - CarrotPlace
+  - BananaPeel
+  - WoodAsh
+  - EggShells
+  - Vinegar
   layers:
   - Default
   - TransparentFX

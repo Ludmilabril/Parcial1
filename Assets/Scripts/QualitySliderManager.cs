@@ -14,30 +14,29 @@ public class QualitySliderManager : MonoBehaviour
     private void Start()
     {
         currentQuality = initialQuality;
-        qualitySlider.gameObject.SetActive(false); // Desactiva el slider al inicio
+        qualitySlider.gameObject.SetActive(false); 
         qualitySlider.value = currentQuality / 100f;
         UpdateSliderColor();
     }
 
     private void Update()
     {
-        if (qualitySlider.gameObject.activeSelf) // Solo actualiza si el slider está activo
+        if (qualitySlider.gameObject.activeSelf) 
         {
             if (waterControl.waterLevel <= 30)
             {
-                DecreaseQuality(1f * Time.deltaTime);
+                DecreaseQuality(2f * Time.deltaTime);
             }
 
             if (spawnPests.PanelText.activeSelf)
             {
-                DecreaseQuality(1f * Time.deltaTime);
+                DecreaseQuality(2f * Time.deltaTime);
             }
 
             UpdateSliderColor();
         }
     }
 
-    // Método para activar el slider cuando se plantan las semillas
     public void ActivateSlider()
     {
         qualitySlider.gameObject.SetActive(true);
@@ -59,7 +58,7 @@ public class QualitySliderManager : MonoBehaviour
 
     public void OnPestsEliminated()
     {
-        IncreaseQuality(5f);
+        IncreaseQuality(10f);
     }
 
     private void UpdateSliderColor()

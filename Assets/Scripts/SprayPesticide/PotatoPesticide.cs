@@ -6,7 +6,7 @@ public class PotatoPesticide : MonoBehaviour
 {
     public int ingridients;
     public int ingridientsMax = 2;
-    public BoxCollider ReadySpray;
+    public CapsuleCollider ReadySpray;
 
     public IInventoryItem inventoryitem;
     public Inventory inventory;
