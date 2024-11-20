@@ -32,6 +32,8 @@ TagManager:
   - WoodAsh
   - EggShells
   - Vinegar
+  - TomatoFertilizer
+  - PotatoFertilizer
   layers:
   - Default
   - TransparentFX
