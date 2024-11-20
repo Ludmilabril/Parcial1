@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     {
         if (mItems.Contains(item))
         {
-            GameObject goItem = (item as MonoBehaviour).gameObject;
+            GameObject goItem = (item as MonoBehaviour).gameObject; 
             goItem.SetActive(true);
             ItemUsed?.Invoke(this, new InventoryEventsArgs(item));
         }
@@ -50,9 +50,6 @@ public class Inventory : MonoBehaviour
             mItems.Remove(item);
             ItemRemoved?.Invoke(this, new InventoryEventsArgs(item));
         }
-        else
-        {
-            Debug.LogWarning("Item no encontrado en el inventario: " + item);
-        }
+ 
     }
 }

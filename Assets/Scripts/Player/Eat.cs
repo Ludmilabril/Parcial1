@@ -40,7 +40,6 @@ public class Eat : MonoBehaviour
         {
             inventory.RemoveItem(currentItem); 
         }
-
         gameObject.SetActive(false); 
     }
 }

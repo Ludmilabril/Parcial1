@@ -21,7 +21,7 @@ public class PlantSeeds : MonoBehaviour
 
     private bool WithGardenShovel = false;
 
-    public SpawnPests spawnPests;  
+    public SpawnPests spawnPests;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,7 +31,7 @@ public class PlantSeeds : MonoBehaviour
             isInLandTrigger = true;
             currentSeedItem = other.GetComponent<IInventoryItem>();
         }
-        if (other.CompareTag("GardenShovel")) 
+        if (other.CompareTag("GardenShovel"))
         {
             TextPlant2.SetActive(true);
             WithGardenShovel = true;
@@ -46,14 +46,14 @@ public class PlantSeeds : MonoBehaviour
             TextTime.SetActive(false);
             textMesh.text = "";
             isInLandTrigger = false;
-            
+
         }
         if (other.CompareTag("GardenShovel"))
         {
             WithGardenShovel = false;
             TextPlant2.SetActive(false);
         }
-        
+
     }
 
     private void Update()
@@ -61,7 +61,7 @@ public class PlantSeeds : MonoBehaviour
         if (isInLandTrigger && Input.GetKeyDown(KeyCode.Q))
         {
             TextPlant.SetActive(false);
-          
+
             GameObject seedsObject = GameObject.FindGameObjectWithTag(TypeSeed);
             if (seedsObject != null)
             {
@@ -72,7 +72,7 @@ public class PlantSeeds : MonoBehaviour
                 inventory.RemoveItem(currentSeedItem);
                 currentSeedItem = null;
             }
-           
+
         }
         if (WithGardenShovel && isInLandTrigger)
         {
@@ -88,10 +88,10 @@ public class PlantSeeds : MonoBehaviour
                 qualitySliderManager.ActivateSlider();
                 Text questText = manager.Quest2.GetComponent<Text>();
                 if (questText != null)
-                {        
+                {
                     questText.color = Color.green;
                     manager.CantQuest += 1;
- 
+
                 }
 
             }
@@ -102,9 +102,9 @@ public class PlantSeeds : MonoBehaviour
     {
         float timer = 0f;
 
-        
+
         spawnPests.StartSpawningPests(duration);
-       
+
         while (timer < duration)
         {
             timer += Time.deltaTime;

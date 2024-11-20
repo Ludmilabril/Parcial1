@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     public GameObject storeCanvas;
+
     public Button tomatoButton;
     public Button carrotButton;
     public Button potatoButton;
@@ -21,8 +22,14 @@ public class Store : MonoBehaviour
     public GameObject CarrotLandPrefab;
     public GameObject PotatoLandPrefab;
 
-    public ItemPlacer itemPlacer; 
+    public ItemPlacer itemPlacer;
+    public ManagersMoney managersMoney;
+    public Transform ItemTransform;
+
     private bool InStore;
+
+    private const int seedPrice = 10;
+    private const int landPrice = 20;
 
     private void Start()
     {
@@ -60,24 +67,40 @@ public class Store : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && InStore)
         {
             storeCanvas.SetActive(!storeCanvas.activeSelf);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            Cursor.lockState = storeCanvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = storeCanvas.activeSelf;
         }
     }
 
     private void BuySeed(GameObject seedPrefab)
     {
-        if (seedPrefab != null)
+        if (managersMoney != null && managersMoney.CanAfford(seedPrice))
         {
+            managersMoney.removeMoney(seedPrice);
+
+            GameObject newSeed = Instantiate(seedPrefab, ItemTransform.position, Quaternion.identity);
+
+            Debug.Log("Seed purchased!");
             storeCanvas.SetActive(false);
         }
+        else
+        {
+            Debug.Log("Not enough money to buy seeds!");
+        }
     }
+
     private void BuyLand(string placeTag, GameObject landPrefab)
     {
-        if (landPrefab != null)
+        if (managersMoney != null && managersMoney.CanAfford(landPrice))
         {
-            itemPlacer.ActivatePlacer(landPrefab, placeTag); 
+            managersMoney.removeMoney(landPrice);
+            itemPlacer.ActivatePlacer(landPrefab, placeTag);
+            Debug.Log("Land purchased!");
             storeCanvas.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Not enough money to buy land!");
         }
     }
 }

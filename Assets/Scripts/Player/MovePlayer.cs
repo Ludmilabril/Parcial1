@@ -30,7 +30,7 @@ public class MovePlayer : MonoBehaviour
 
         goItem.SetActive(true);
         Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
-        if (collider.enabled == false)
+        if (collider != null && collider.enabled == false)
         {
             collider.enabled = true;
         }
@@ -38,6 +38,13 @@ public class MovePlayer : MonoBehaviour
         goItem.transform.SetParent(transform);
         goItem.transform.localPosition = new Vector3(0, 0.2f, 1);
         goItem.transform.localRotation = Quaternion.identity;
+
+        if (mItemToPickup == item)
+        {
+            mItemToPickup = null;
+        }
+
+        hud.CloseMessagePanel();
     }
 
     void Update()
@@ -45,8 +52,10 @@ public class MovePlayer : MonoBehaviour
         if (mItemToPickup != null && Input.GetKeyDown(KeyCode.F))
         {
             inventory.addItem(mItemToPickup);
+
             mItemToPickup.OnPickUp();
             hud.CloseMessagePanel();
+
             Text questText = manager.Quest1.GetComponent<Text>();
             QuestManager managerQuest = manager.GetComponent<QuestManager>();
 
@@ -55,6 +64,8 @@ public class MovePlayer : MonoBehaviour
                 manager.CantQuest += 1;
                 questText.color = Color.green;
             }
+
+            mItemToPickup = null;
         }
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -83,7 +94,7 @@ public class MovePlayer : MonoBehaviour
     {
         IInventoryItem item = other.GetComponent<IInventoryItem>();
 
-        if (item != null)
+        if (item != null && mItemToPickup == item)
         {
             hud.CloseMessagePanel();
             mItemToPickup = null;
