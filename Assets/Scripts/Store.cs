@@ -79,13 +79,7 @@ public class Store : MonoBehaviour
             managersMoney.removeMoney(seedPrice);
 
             GameObject newSeed = Instantiate(seedPrefab, ItemTransform.position, Quaternion.identity);
-
-            Debug.Log("Seed purchased!");
             storeCanvas.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("Not enough money to buy seeds!");
         }
     }
 
@@ -95,12 +89,7 @@ public class Store : MonoBehaviour
         {
             managersMoney.removeMoney(landPrice);
             itemPlacer.ActivatePlacer(landPrefab, placeTag);
-            Debug.Log("Land purchased!");
             storeCanvas.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("Not enough money to buy land!");
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Carrots : MonoBehaviour, IInventoryItem
 {
-    public string Name { get { return "Seeds"; } }
+    public string Name { get { return "Carrot"; } }
 
     public Sprite _image;
     public Sprite image

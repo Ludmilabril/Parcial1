@@ -10,7 +10,7 @@ public class ItemClick : MonoBehaviour
     private Color colorInicial;
 
     private Image currentItemImage;
-    private IInventoryItem currentItem; 
+    public IInventoryItem currentItem;
     private void Start()
     {
         Transform slotTransform = inventoryPanel.transform;
@@ -18,7 +18,15 @@ public class ItemClick : MonoBehaviour
 
         colorInicial = currentItemImage.color;
     }
-
+    public void ClearCurrentItem()
+    {
+        currentItem = null;
+        if (currentItem != null)
+        {
+            currentItemImage.color = colorInicial;
+            currentItemImage = null;
+        }
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) { PressItem(0); }
@@ -65,9 +73,6 @@ public class ItemClick : MonoBehaviour
                 currentItemImage.color = Color.green; 
             }
         }
-        else
-        {
-            Debug.LogWarning("Ítem nulo en el slot: " + slot); 
-        }
+
     }
 }

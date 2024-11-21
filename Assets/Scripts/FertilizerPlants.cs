@@ -13,11 +13,6 @@ public class FertilizerPlants : MonoBehaviour
             if (qualityManager != null)
             {
                 qualityManager.IncreaseQuality(20f);
-                Debug.Log("Calidad de la planta mejorada en un 10%.");
-            }
-            else
-            {
-                Debug.LogWarning("QualitySliderManager no está asignado.");
             }
         }
     }

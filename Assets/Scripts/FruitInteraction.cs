@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FruitInteraction : MonoBehaviour, IInventoryItem
 {
     public QuestManager manager;
-    public string Name { get { return "Seeds"; } }
+    public string Name { get { return "Tomato"; } }
 
     public Sprite _image;
     public Sprite image
@@ -25,13 +25,14 @@ public class FruitInteraction : MonoBehaviour, IInventoryItem
             {
                 isCollected = true;
                 CollectFruit(playerInventory);
-                Text questText = manager.Quest5.GetComponent<Text>();
+               
+            }
+            Text questText = manager.Quest5.GetComponent<Text>();
 
-                if (questText != null)
-                {
-                    manager.CantQuest += 1;
-                    questText.color = Color.green;
-                }
+            if (manager.CantQuest == 4)
+            {
+                manager.CantQuest += 1;
+                questText.color = Color.green;
             }
         }
     }
