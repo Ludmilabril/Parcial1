@@ -36,7 +36,6 @@ public class ControlWaterPlants : MonoBehaviour
             if (waterLevel <= 0)
             {
                 waterLevel = 0;
-                DeactivateFruits();
                 StopCoroutine(WaterDecrease());
             }
 
@@ -113,6 +112,21 @@ public class ControlWaterPlants : MonoBehaviour
         {
             GameObject fruit = Instantiate(fruitPrefab, position.position, position.rotation);
             activeFruits.Add(fruit);
+
+            // Configura el QualitySliderManager específico para esta tierra
+            FruitInteraction fruitInteraction = fruit.GetComponent<FruitInteraction>();
+            QualitySliderManager sliderManager = this.GetComponentInParent<QualitySliderManager>();
+            if (fruitInteraction != null)
+            {
+                if (sliderManager != null)
+                {
+                    fruitInteraction.Initialize(sliderManager);
+                }
+                else
+                {
+                    Debug.LogError($"No se encontró QualitySliderManager para {gameObject.name}. Asegúrate de que está configurado correctamente en la jerarquía.");
+                }
+            }
         }
         waterLevel = 100f;
     }

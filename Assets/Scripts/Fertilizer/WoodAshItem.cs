@@ -5,6 +5,8 @@ using UnityEngine;
 public class WoodAshItem : MonoBehaviour, IInventoryItem
 {
     public string Name { get { return "WoodAsh"; } }
+    public bool HasQuality { get { return false; } } // No tiene calidad
+    public QualityType Quality { get { return QualityType.Low; } } // No se usa
 
     public Sprite _image;
     public Sprite image

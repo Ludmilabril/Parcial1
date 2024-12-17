@@ -17,7 +17,7 @@ public class PlantSeeds : MonoBehaviour
     public float timer;
     private bool isInLandTrigger = false;
     private IInventoryItem currentSeedItem;
-    public QualitySliderManager qualitySliderManager;
+    public QualitySliderManager qualitySliderManager;   
 
     private bool WithGardenShovel = false;
 

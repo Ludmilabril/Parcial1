@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263763005543427593}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045043465, y: -0.6623071, z: 0.03955217, w: 0.7468307}
-  m_LocalPosition: {x: -9.231459, y: -1.7285132, z: -8.692061}
-  m_LocalScale: {x: 15.071419, y: 1.4986604, z: 18.374691}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.939026, y: -2.3105469, z: 11.379578}
+  m_LocalScale: {x: 7.8778334, y: 0.7833503, z: 9.604459}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 120778940339635448}
@@ -39,7 +39,7 @@ Transform:
   - {fileID: 1438235002300825524}
   - {fileID: 4818599864269395900}
   - {fileID: 9117671558667696218}
-  m_Father: {fileID: 8369688269597146164}
+  m_Father: {fileID: 528347876798944748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7443609408968869847
 MeshFilter:
@@ -1130,6 +1130,7 @@ MonoBehaviour:
   waterControl: {fileID: 3386709972807384047}
   manager: {fileID: 0}
   timer: 15
+  qualitySliderManager: {fileID: 0}
   spawnPests: {fileID: 5338057581726436173}
 --- !u!114 &3386709972807384047
 MonoBehaviour:
@@ -1189,6 +1190,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8369688269597146164}
+  - {fileID: 8194217067968681130}
+  - {fileID: 1319713084729482395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6423602490160177440
@@ -1705,16 +1708,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8218443929528336513}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045043465, y: -0.6623071, z: 0.03955217, w: 0.7468307}
-  m_LocalPosition: {x: -51.20638, y: 0.5049686, z: 6.591134}
-  m_LocalScale: {x: 1.9131426, y: 1.9131421, z: 1.9131414}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.631897, y: 1.5726929, z: 33.81418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 940120744488731599}
   - {fileID: 6924974960272810321}
   - {fileID: 7099711526273804523}
   - {fileID: 8351541618863891949}
-  m_Father: {fileID: 8369688269597146164}
+  m_Father: {fileID: 528347876798944748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8489166509891363482
 GameObject:
@@ -2087,8 +2090,6 @@ Transform:
   m_Children:
   - {fileID: 4636101434095069009}
   - {fileID: 3429235847204766190}
-  - {fileID: 1319713084729482395}
-  - {fileID: 8194217067968681130}
   - {fileID: 797166842237638237}
   - {fileID: 5725363185733870002}
   - {fileID: 3634709206576911368}
