@@ -57,6 +57,13 @@ public class QualitySliderManager : MonoBehaviour
         qualitySlider.value = currentQuality / 100f;
         UpdateSliderColor();
     }
+    public void stopSlider()
+    {
+        qualitySlider.value = currentQuality;
+        IncreaseQuality(0);
+        DecreaseQuality(0);
+        UpdateSliderColor();
+    }
 
     public void OnPestsEliminated()
     {
@@ -69,7 +76,7 @@ public class QualitySliderManager : MonoBehaviour
         {
             fillArea.color = Color.red;
         }
-        else if (currentQuality >= 20f && currentQuality < 50f)
+        else if (currentQuality >= 20f && currentQuality <= 50f)
         {
             fillArea.color = new Color(1f, 0.65f, 0f);
         }
@@ -84,7 +91,7 @@ public class QualitySliderManager : MonoBehaviour
     {
         if (currentQuality < 20f)
             return QualityType.Low;
-        else if (currentQuality >= 20f && currentQuality < 50f)
+        else if (currentQuality >= 20f && currentQuality <= 50f)
             return QualityType.Medium;
         else
             return QualityType.High;

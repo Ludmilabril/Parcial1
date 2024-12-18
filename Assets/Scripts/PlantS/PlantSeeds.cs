@@ -102,7 +102,6 @@ public class PlantSeeds : MonoBehaviour
     {
         float timer = 0f;
 
-
         spawnPests.StartSpawningPests(duration);
 
         while (timer < duration)
@@ -115,8 +114,15 @@ public class PlantSeeds : MonoBehaviour
 
         TextTime.SetActive(false);
         textMesh.text = "";
-        TextRec.SetActive(true);
+        StartCoroutine(ShowTextForSeconds(TextRec, 5f)); // Muestra el texto por 5 segundos
         waterControl.StopWaterDecrease();
         waterControl.ActivateFruits();
+    }
+
+    private IEnumerator ShowTextForSeconds(GameObject textObject, float duration)
+    {
+        textObject.SetActive(true); // Activa el texto
+        yield return new WaitForSeconds(duration); // Espera la duración especificada
+        textObject.SetActive(false); // Desactiva el texto
     }
 }

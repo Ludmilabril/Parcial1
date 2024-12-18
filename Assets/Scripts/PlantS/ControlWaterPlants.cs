@@ -127,7 +127,10 @@ public class ControlWaterPlants : MonoBehaviour
                     Debug.LogError($"No se encontró QualitySliderManager para {gameObject.name}. Asegúrate de que está configurado correctamente en la jerarquía.");
                 }
             }
+            sliderManager.StopAllCoroutines();
+            sliderManager.stopSlider();
         }
+        StopCoroutine(WaterDecrease());
         waterLevel = 100f;
     }
 }
